@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Video Stream</title>
+    </head>
+    <body>
+        <h1>User Video Stream</h1>
+        <video id="localVideo" autoplay playsinline></video>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+        <script>
+            const socket = io();
+            const localVideo = document.getElementById("localVideo");
+            let localStream;
+            let peerConnection;
+
+            const config = {
+                iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+            };
+
+            async function startLocalVideo() {
+                try {
+                    localStream = await navigator.mediaDevices.getUserMedia({
+                        video: true,
+                    });
+                    localVideo.srcObject = localStream;
+                    socket.emit("offer", await createOffer());
+                } catch (err) {
+                    console.error("Error accessing media devices.", err);
+                }
+            }
+
+            function createPeerConnection() {
+                peerConnection = new RTCPeerConnection(config);
+                peerConnection.onicecandidate = (event) => {
+                    if (event.candidate) {
+                        socket.emit("ice-candidate", event.candidate);
+                    }
+                };
+
+                localStream.getTracks().forEach((track) => {
+                    peerConnection.addTrack(track, localStream);
+                });
+            }
+
+            async function createOffer() {
+                createPeerConnection();
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
+                return offer;
+            }
+
+            startLocalVideo();
+        </script>
+    </body>
+</html>
