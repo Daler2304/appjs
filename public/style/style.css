@@ -14,3 +14,8 @@ video {
     border-radius: 8px;
     transform: scaleX(-1);
 }
+
+label {
+    text-align: center;
+    font-style: italic;
+}
