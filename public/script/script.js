@@ -1,19 +1,15 @@
+const videoElement = document.getElementById('video');
 
-
-//Поле пароль
-document.getElementById("togglePassword").addEventListener("click", function () {
-    const passwordField = document.getElementById("password");
-    const toggleIcon = document.getElementById("toggleIcon");
-    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
-    passwordField.setAttribute("type", type);
-
-    toggleIcon.src =
-        type === "password"
-        ? "static/unvisible.png"
-        : "static/visible.png";
-    
-    toggleIcon.title =
-        type === "password"
-        ? "Показать пароль"
-        : "Скрыть пароль";
-});
+        // Запрашиваем доступ к камере пользователя
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: 'user' // Используем фронтальную камеру
+            }
+        })
+        .then((stream) => {
+            // Передаем видеопоток в элемент <video>
+            videoElement.srcObject = stream;
+        })
+        .catch((error) => {
+            console.error('Ошибка доступа к камере: ', error);
+        });

@@ -1,0 +1,16 @@
+#videoContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transform: scaleX(-1);
+}
