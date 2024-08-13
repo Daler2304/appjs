@@ -1,10 +1,14 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`on port ${process.env.PORT || 3000}`);
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/templates/index.html'));
 });
 
-app.get('/', async (req, res) => {
-    res.send('<h1>Hello Daler</h1>');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
