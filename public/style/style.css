@@ -15,7 +15,7 @@ video {
     transform: scaleX(-1);
 }
 
-label {
+p {
     text-align: center;
     font-style: italic;
 }
