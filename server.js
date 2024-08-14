@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/templates/index.html'));
 });
 
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/templates/admin.html'));
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
