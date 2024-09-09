@@ -13,7 +13,7 @@ app.get('/admin', (req, res) => {
 });
 
 app.get('/timetable', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/templates/index.html'));
+    res.sendFile(path.join(__dirname, 'public/templates/timetable.html'));
 });
 
 // Запуск сервера
