@@ -10,8 +10,8 @@ a {
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
 }
 
 .bar {
@@ -104,7 +104,7 @@ body {
     height: max-content;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     background-color: #333;
     color: white;
     text-align: center;
@@ -113,16 +113,17 @@ body {
 .footer-list {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.footer-list > li {
+.footer-list > a > li {
     list-style-type: none;
     margin: 0px 15px 0px 15px;
     padding: 5px 15px 5px 15px;
     border-radius: 50px;
 }
 
-.footer-list > li > a {
+.footer-list > a {
     color: white;
 }
 
@@ -138,7 +139,7 @@ body {
     cursor: default;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1200px) {
     .groups:hover {
         cursor: pointer;
         background-color: rgb(236, 236, 236);
@@ -149,13 +150,13 @@ body {
         background-color: rgb(219, 219, 219);
     }
 
-    .footer-list > li:hover {
+    .footer-list > a > li:hover {
         background-color: #444444;
         cursor: default;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 768px) {
     .bar {
         height: 35px;
     }
@@ -199,5 +200,18 @@ body {
         background-color: #333;
         color: white;
         text-align: center;
+    }
+
+    .footer-list {
+        flex-direction: column;
+        font-size: 12px;
+    }
+
+    .footer-3 {
+        font-size: 12px;
+    }
+
+    .footer-list > a > li {
+        flex-basis: calc(50% - 30px);
     }
 }

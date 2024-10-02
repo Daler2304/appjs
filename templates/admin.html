@@ -1,11 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Форма обратной связи</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column; /* Вертикальное расположение элементов */
+                min-height: 100vh; /* Минимальная высота 100% высоты окна */
+            }
+            * {
+                box-sizing: border-box; /* Устанавливаем для всех элементов */
+            }
+            .container {
+                flex: 1; /* Занимает оставшееся пространство */
+                max-width: 600px;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                margin: auto; /* Центрирование контейнера */
+            }
+            h2 {
+                text-align: center;
+                color: #333;
+            }
+            label {
+                font-weight: bold;
+                margin-top: 10px;
+                display: block;
+                color: #555;
+            }
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                width: 100%; /* Занимает 100% ширины контейнера */
+                padding: 12px;
+                margin: 8px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                resize: vertical; /* Позволяет изменять размер textarea по вертикали */
+            }
+            input[type="text"]:focus,
+            input[type="email"]:focus,
+            textarea:focus {
+                border-color: #4ca3af;
+                outline: none;
+            }
+            button {
+                background-color: #2a8386;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                width: 100%; /* Занимает 100% ширины контейнера */
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #206568;
+            }
+            footer {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 14px;
+                color: #555;
+                padding: 10px 0; /* Добавлено для отступов */
+                background-color: #f4f4f4; /* Цвет фона футера */
+            }
+            footer a {
+                color: #2a8386;
+                text-decoration: none;
+            }
+            footer a:hover {
+                text-decoration: underline;
+            }
+        </style>
     </head>
     <body>
-        ghbdtn
+        <div class="container">
+            <h2>Форма обратной связи</h2>
+            <form action="/submit-form" method="POST" id="feedback-form">
+                <label for="name">Имя:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    aria-required="true"
+                    placeholder="Введите ваше имя"
+                />
+
+                <label for="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    aria-required="true"
+                    placeholder="Введите ваш email"
+                />
+
+                <label for="message">Сообщение:</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                    aria-required="true"
+                    placeholder="Ваше сообщение"
+                ></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>
+                Политика обработки персональных данных
+                <a href="/privacy-policy" target="_blank">Читать далее</a>
+            </p>
+        </footer>
     </body>
 </html>
