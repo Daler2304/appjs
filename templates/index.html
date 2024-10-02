@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Расписание ВШПМ Санкт-Петербургского университета промышленных технологий и дизайна."
+        />
+
+        <title>Расписание СПбГУПТД</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="shortcut icon" href="static/icon.png" type="image/x-icon" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="bar">
+                <div class="pom"></div>
+                <div class="bar-2">
+                    <a href="https://sutd.ru/">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/1/19/Логотип_СПбГУПТД.jpg"
+                            alt="sbuptd"
+                            class="bar-img"
+                        />
+                    </a>
+                    <p class="rasp">Расписание ВШПМ</p>
+                </div>
+                <p class="lang">
+                    <span
+                        class="check-en"
+                        id="lang-en"
+                        onclick="setUnderline('en')"
+                        >En</span
+                    >
+                    |
+                    <span
+                        class="check-ru"
+                        id="lang-ru"
+                        onclick="setUnderline('ru')"
+                        >Ru</span
+                    >
+                </p>
+            </div>
+
+            <div class="app">
+                <div class="main-app" onclick="showList()">
+                    <p>Текущий уч. год 2024</p>
+                </div>
+                <div class="sub-app" id="sub-app">
+                    <a href="https://hspm-timetable/1-tiv-2"
+                        ><p class="groups">1-ТИВ-2</p></a
+                    >
+                    <a href="https://hspm-timetable/1-tiv-2"
+                        ><p class="groups">1-ТИВ-3</p></a
+                    >
+                    <a href="https://hspm-timetable/1-tiv-2"
+                        ><p class="groups">2-ТИВ-2</p></a
+                    >
+                    <a href="https://hspm-timetable/1-tiv-2"
+                        ><p class="groups">2-ТИВ-3</p></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-2">
+                <ul class="footer-list">
+                    <li><a href="#admin">Администрация сайта</a></li>
+                    <li><a href="#contacts">Контактная информация</a></li>
+                    <li><a href="#official_site">Оффициальный сайт</a></li>
+                    <li><a href="#more">Дополнительно</a></li>
+                </ul>
+            </div>
+            <div class="footer-3">
+                © 2010 - 2024 Санкт-Петербургский государственный университет
+                промышленных технологий и дизайна
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

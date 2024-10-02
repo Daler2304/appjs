@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 110, 255);
+    height: 50px;
+}
+
+.bar-2 {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.bar > * {
+    color: white;
+    font-size: 18px;
+}
+
+.bar-img {
+    width: 40px;
+    padding: 10px;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.rasp {
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    cursor: default;
+    /* Для вертикального выравнивания текста и изображения */
+}
+
+.lang {
+    padding-right: 30px;
+}
+
+.check-ru {
+    text-decoration: underline;
+}
+
+#lang-en,
+#lang-ru {
+    font-weight: bold;
+}
+
+#lang-en,
+#lang-ru:hover {
+    cursor: pointer;
+}
+
+.app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.main-app {
+    width: 80vw;
+    background-color: rgb(233, 233, 233);
+    padding: 10px;
+    border: 0.01cm solid rgb(218, 218, 218);
+}
+
+.sub-app {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80vw;
+}
+
+.groups {
+    width: 80vw;
+    padding: 10px;
+    border: 0.01cm solid rgb(218, 218, 218);
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    transition-duration: 0.2s;
+}
+
+.pom {
+    display: none;
+}
+
+.footer {
+    height: max-content;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+.footer-list {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-list > li {
+    list-style-type: none;
+    margin: 0px 15px 0px 15px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 50px;
+}
+
+.footer-list > li > a {
+    color: white;
+}
+
+.footer-2 {
+    font-size: 14px;
+    padding: 15px 10px 0px 0px;
+}
+
+.footer-3 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 12px;
+    cursor: default;
+}
+
+@media (min-width: 700px) {
+    .groups:hover {
+        cursor: pointer;
+        background-color: rgb(236, 236, 236);
+    }
+
+    .main-app:hover {
+        cursor: pointer;
+        background-color: rgb(219, 219, 219);
+    }
+
+    .footer-list > li:hover {
+        background-color: #444444;
+        cursor: default;
+    }
+}
+
+@media (max-width: 360px) {
+    .bar {
+        height: 35px;
+    }
+
+    .pom {
+        display: flex;
+        margin-right: 30px;
+    }
+
+    .bar > * {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+
+    .bar-img {
+        display: none;
+    }
+
+    .main-app {
+        font-size: 12px;
+    }
+
+    .sub-app {
+        display: none;
+        flex-direction: column;
+    }
+
+    .groups {
+        display: flex;
+        width: 80vw;
+        padding: 10px;
+        color: rgb(0, 0, 0);
+        font-size: 10px;
+        transition-duration: 0s;
+    }
+
+    .footer {
+        position: absolute;
+        top: 90vh;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+    }
+}
