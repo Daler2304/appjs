@@ -1,11 +1,17 @@
 const express = require("express");
 const path = require("path");
+
 const app = express();
 const PORT = 3000;
 
 // Раздача статических файлов
 app.use(express.static(path.join(__dirname, "templates")));
 app.use(express.static(path.join(__dirname, "static")));
+
+// Раздача yandex_e83b9e40bfb17547.html
+app.get("/yandex_e83b9e40bfb17547.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "yandex_e83b9e40bfb17547.html"));
+});
 
 // Маршрут для раздачи lang.json
 app.get("/lang.json", (req, res) => {
