@@ -27,6 +27,11 @@ app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, "templates", "admin.html"));
 });
 
+// Маршрут для страницы политики обработки персональных данных
+app.get("/privacy-policy", (req, res) => {
+    res.sendFile(path.join(__dirname, "templates", "privacy-policy.html"));
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
