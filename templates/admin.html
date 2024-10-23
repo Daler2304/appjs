@@ -15,20 +15,21 @@
                 margin: 0;
                 padding: 0;
                 display: flex;
-                flex-direction: column; /* Вертикальное расположение элементов */
-                min-height: 100vh; /* Минимальная высота 100% высоты окна */
+                flex-direction: column;
+                min-height: 100vh;
+                justify-content: center; /* Центрирование содержимого */
             }
             * {
-                box-sizing: border-box; /* Устанавливаем для всех элементов */
+                box-sizing: border-box;
             }
             .container {
-                flex: 1; /* Занимает оставшееся пространство */
+                flex: 1;
                 max-width: 600px;
                 background: white;
                 padding: 20px;
                 border-radius: 10px;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                margin: auto; /* Центрирование контейнера */
+                margin: auto;
             }
             h2 {
                 text-align: center;
@@ -43,13 +44,13 @@
             input[type="text"],
             input[type="email"],
             textarea {
-                width: 100%; /* Занимает 100% ширины контейнера */
+                width: 100%;
                 padding: 12px;
                 margin: 8px 0;
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 font-size: 16px;
-                resize: vertical; /* Позволяет изменять размер textarea по вертикали */
+                resize: vertical;
             }
             input[type="text"]:focus,
             input[type="email"]:focus,
@@ -65,7 +66,7 @@
                 border-radius: 5px;
                 cursor: pointer;
                 font-size: 16px;
-                width: 100%; /* Занимает 100% ширины контейнера */
+                width: 100%;
                 transition: background-color 0.3s;
             }
             button:hover {
@@ -76,8 +77,8 @@
                 margin-top: 20px;
                 font-size: 14px;
                 color: #555;
-                padding: 10px 0; /* Добавлено для отступов */
-                background-color: #f4f4f4; /* Цвет фона футера */
+                padding: 10px 0;
+                background-color: #f4f4f4;
             }
             footer a {
                 color: #2a8386;
@@ -86,12 +87,18 @@
             footer a:hover {
                 text-decoration: underline;
             }
+            .success-message {
+                display: none; /* Скрываем галочку по умолчанию */
+                font-size: 50px;
+                color: green;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <h2>Форма обратной связи</h2>
-            <form action="/submit-form" method="POST" id="feedback-form">
+            <form id="feedback-form">
                 <label for="name">Имя:</label>
                 <input
                     type="text"
@@ -124,6 +131,9 @@
 
                 <button type="submit">Отправить</button>
             </form>
+
+            <div id="response-message" class="success-message">&#10004;</div>
+            <!-- Галочка -->
         </div>
 
         <footer>
@@ -132,5 +142,43 @@
                 <a href="/privacy-policy" target="_blank">Читать далее</a>
             </p>
         </footer>
+
+        <script>
+            document
+                .getElementById("feedback-form")
+                .addEventListener("submit", async function (event) {
+                    event.preventDefault(); // Остановка стандартной отправки формы
+
+                    const formData = new URLSearchParams(new FormData(this)); // Собираем данные формы
+
+                    try {
+                        const response = await fetch("/submit-form", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type":
+                                    "application/x-www-form-urlencoded",
+                                Accept: "application/json",
+                            },
+                            body: formData.toString(), // Отправляем данные формы в формате urlencoded
+                        });
+
+                        const result = await response.text(); // Ожидаем ответ от сервера
+                        console.log(result); // Логируем ответ от сервера
+
+                        // Очищаем форму
+                        this.reset();
+
+                        // Отображаем галочку
+                        document.getElementById(
+                            "response-message"
+                        ).style.display = "block";
+                    } catch (error) {
+                        console.error("Ошибка при отправке формы:", error);
+                        document.getElementById(
+                            "response-message"
+                        ).textContent = "Ошибка отправки формы.";
+                    }
+                });
+        </script>
     </body>
 </html>
