@@ -43,8 +43,8 @@ const transporter = nodemailer.createTransport({
     port: 587, // Порт для TLS
     secure: false, // Указываем false для использования TLS
     auth: {
-        user: "Sirozhidinov.DK.267@suitd.ru", // Ваш полный адрес электронной почты
-        pass: "927197368Daler", // Ваш пароль от почты Outlook
+        user: "email", // Ваш полный адрес электронной почты
+        pass: "pass", // Ваш пароль от почты Outlook
     },
 });
 
