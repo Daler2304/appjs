@@ -11,7 +11,7 @@ function setUnderline(lang) {
     const enElement = document.getElementById("lang-en");
     const ruElement = document.getElementById("lang-ru");
 
-    fetch("lang.json") // Укажите правильный путь к вашему файлу
+    fetch("/lang.json")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -19,26 +19,22 @@ function setUnderline(lang) {
             return response.json();
         })
         .then((data) => {
-            // Обновление текста на основе выбранного языка
+            // Обновляем тексты на странице на выбранный язык
             document.querySelector(".rasp").textContent = data[lang].timetable;
             document.querySelector(".main-app p").textContent =
-                data[lang].current_year;
-            document.querySelector(
-                ".footer-list a:nth-child(1) li"
-            ).textContent = data[lang].administration;
-            document.querySelector(
-                ".footer-list a:nth-child(2) li"
-            ).textContent = data[lang].contacts;
-            document.querySelector(
-                ".footer-list a:nth-child(3) li"
-            ).textContent = data[lang].offsite;
-            document.querySelector(
-                ".footer-list a:nth-child(4) li"
-            ).textContent = data[lang].more;
+                data[lang].timetable;
+
+            // Обновляем все элементы footer
+            const footerItems = document.querySelectorAll(".footer-list li");
+            footerItems[0].textContent = data[lang].admin;
+            footerItems[1].textContent = data[lang].contacts;
+            footerItems[2].textContent = data[lang].offsite;
+            footerItems[3].textContent = data[lang].more;
+            // Обновляем текст футера
             document.querySelector(".footer-3").textContent =
                 data[lang].footer_text;
 
-            // Обновление групп
+            // Обновляем группы
             const groupElements = document.querySelectorAll(".groups");
             const groups = data[lang].groups;
             groupElements.forEach((element, index) => {
@@ -49,7 +45,7 @@ function setUnderline(lang) {
             console.error("Error fetching JSON:", error);
         });
 
-    // Установка выделения для языка
+    // Устанавливаем подчеркивание для выбранного языка
     if (lang === "en") {
         ruElement.style.textDecoration = "none";
         enElement.style.textDecoration = "underline";

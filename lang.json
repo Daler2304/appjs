@@ -2,18 +2,17 @@
     "en": {
         "timetable": "HSPM timetables",
         "current_year": "Current academic year 2024-2025",
-        "administration": "Administration",
+        "admin": "Administration",
         "contacts": "Contacts",
         "offsite": "Official page",
         "more": "Additionally",
         "groups": ["1-TIV-2", "1-TIV-3", "2-TIV-2", "2-TIV-3"],
         "footer_text": "© 2010 - 2024 Saint Petersburg State University of Industrial Technologies and Design"
     },
-
     "ru": {
         "timetable": "Расписание ВШПМ",
         "current_year": "Текущий 2024-2025 уч. год",
-        "administration": "Администрация сайта",
+        "admin": "Администрация сайта",
         "contacts": "Контакты",
         "offsite": "Оффициальный сайт",
         "more": "Дополнительно",
